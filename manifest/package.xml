@@ -2,11 +2,24 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>AdoptionStatusTrigger</members>
+        <members>CountAdoptionsTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
         <members>EmailManager</members>
         <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Account</members>
+        <members>Adoption__c</members>
+        <members>Animal__c</members>
+        <members>Contact</members>
+        <members>MissingAnimal__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Account.Adoptions_Count__c</members>
+        <name>CustomField</name>
     </types>
     <version>54.0</version>
 </Package>
