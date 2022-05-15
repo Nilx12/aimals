@@ -64,5 +64,17 @@
         <members>Aimals_Account_Page</members>
         <name>FlexiPage</name>
     </types>
+    <types>
+        <members>Account</members>
+        <members>Adoption__c</members>
+        <members>Animal__c</members>
+        <members>Contact</members>
+        <members>MissingAnimal__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Account.Adoptions_Count__c</members>
+        <name>CustomField</name>
+    </types>
     <version>54.0</version>
 </Package>
