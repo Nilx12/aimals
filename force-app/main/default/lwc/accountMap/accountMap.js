@@ -14,7 +14,10 @@ export default class AccountMap extends LightningElement {
     account;
     error;
     mapMarkers;
+    mapOptions;
     successfullyFetchedLocation = false;
+    zoomLevel = 15;
+
 
     @wire(getRecord, { recordId: '$recordId',
         fields: [ACCOUNT_NAME,
@@ -30,11 +33,19 @@ export default class AccountMap extends LightningElement {
             this.error = undefined;
             this.successfullyFetchedLocation = true
             this.setMapMarkers()
+            this.setMapOptions()
         } else if (error) {
             this.error = error;
             this.account = undefined;
             this.successfullyFetchedLocation = false
         }
+    }
+
+    setMapOptions() {
+        this.mapOptions = {
+            draggable: false,
+            disableDefaultUI: true,
+        };
     }
 
     setMapMarkers() {

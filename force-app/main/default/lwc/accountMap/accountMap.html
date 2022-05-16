@@ -4,7 +4,10 @@
                         <p class="slds-align_absolute-center">Couldn't load Location </p>
                 </template>
                 <template if:true={successfullyFetchedLocation}>
-                        <lightning-map map-markers={mapMarkers}> </lightning-map>
+                        <lightning-map
+                                map-markers={mapMarkers}
+                                zoom-level={zoomLevel}
+                                options={mapOptions}> </lightning-map>
                 </template>
         </lightning-card>
 </template>
