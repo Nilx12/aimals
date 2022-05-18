@@ -2,6 +2,8 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>EmailManager</members>
+        <members>FM_OpeningHours_Service</members>
+        <members>FM_OpeningHours_ServiceEndpoint</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -15,12 +17,14 @@
         <members>MissingAnimal__c</members>
         <members>Case</members>
         <members>Contact</members>
+        <members>Opening_Hours__c</members>
         <name>CustomObject</name>
     </types>
     <types>
         <members>Adoption__c</members>
         <members>Animal__c</members>
         <members>MissingAnimal__c</members>
+        <members>Opening_Hours__c</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -32,6 +36,7 @@
         <members>Account-Account Layout</members>
         <members>Case-Case Layout</members>
         <members>Contact-Contact Layout</members>
+        <members>Opening_Hours__c-Opening Hours Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -57,24 +62,13 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>accountMap</members>
-        <name>LightningComponentBundle</name>
-    </types>
-    <types>
         <members>Aimals_Account_Page</members>
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>Account</members>
-        <members>Adoption__c</members>
-        <members>Animal__c</members>
-        <members>Contact</members>
-        <members>MissingAnimal__c</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>Account.Adoptions_Count__c</members>
-        <name>CustomField</name>
+        <members>accountMap</members>
+        <members>opening_hours</members>
+        <name>LightningComponentBundle</name>
     </types>
     <version>54.0</version>
 </Package>
