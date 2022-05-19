@@ -89,6 +89,16 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>opening_hours</componentName>
+                <identifier>c_opening_hours</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-b898f5c2-b1e2-4225-868f-d76fa27f150d</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
@@ -131,6 +141,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>newsTab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-b898f5c2-b1e2-4225-868f-d76fa27f150d</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Opening Hours</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
