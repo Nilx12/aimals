@@ -1,4 +1,4 @@
-trigger CountAdoptionsTrigger on Adoption__c (before insert) {
+trigger CountAdoptionsTrigger on Adoption__c (after insert) {
 
     Set<Id> resultIds = (new Map<Id,SObject>(Trigger.New)).keySet();
     List<Id> accIds = new List<Id>();
@@ -18,6 +18,10 @@ trigger CountAdoptionsTrigger on Adoption__c (before insert) {
     for(Adoption__c a: adoptions){
         Id id = a.Animal__r.Account__c;
         Account ac = accounts.get(id);
+        Decimal ah = ac.Adoptions_Count__c;
+        if (ah == null){
+            ac.Adoptions_Count__c = 0;
+        }
         ac.Adoptions_Count__c+=1;
     }
     update accounts.values();
