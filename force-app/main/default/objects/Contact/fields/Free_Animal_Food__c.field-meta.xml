@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Free_Animal_Food__c</fullName>
+    <defaultValue>&quot;Unavailable&quot;</defaultValue>
+    <description>Field showing whether free animal food is available for contact or not</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Rip-off of boolean value, possible values: Available or Unavailable</inlineHelpText>
+    <label>Free Animal Food</label>
+    <length>15</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
