@@ -701,9 +701,6 @@
     <layoutAssignments>
         <layout>Opening_Hours__c-Opening Hours Layout</layout>
     </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opening_Hours__c-Opening Hours Layout</layout>
-    </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
