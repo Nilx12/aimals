@@ -4,7 +4,8 @@ public with sharing class FM_OpeningHours_ServiceEndpoint {
     public static Map<String, String> getOpeningHoursForAccount(Id accountId) {
         Map<String, String> result = new Map<String, String>();
         Opening_Hours__c oh = [SELECT Account__c, Monday_Start_Time__c, Monday_End_Time__c, Tuesday_Start_Time__c, Tuesday_End_Time__c,
-                Wednesday_Start_Time__c, Wednesday_End_Time__c, Thursday_Start_Time__c, Thursday_End_Time__c, Friday_Start_Time__c, Friday_End_Time__c FROM Opening_Hours__c WHERE Account__c = :accountId];
+                Wednesday_Start_Time__c, Wednesday_End_Time__c, Thursday_Start_Time__c, Thursday_End_Time__c, Friday_Start_Time__c, Friday_End_Time__c,
+                Saturday_Start_Time__c, Saturday_End_Time__c, Sunday_Start_Time__c, Sunday_End_Time__c FROM Opening_Hours__c WHERE Account__c = :accountId];
 
         if(oh != null) {
             result = new Map<String, String>();
@@ -13,6 +14,8 @@ public with sharing class FM_OpeningHours_ServiceEndpoint {
             result.put('Wednesday', FM_OpeningHours_Service.getOpenAndCloseHoursString(oh.Wednesday_Start_Time__c, oh.Wednesday_End_Time__c));
             result.put('Thursday', FM_OpeningHours_Service.getOpenAndCloseHoursString(oh.Thursday_Start_Time__c, oh.Thursday_End_Time__c));
             result.put('Friday', FM_OpeningHours_Service.getOpenAndCloseHoursString(oh.Friday_Start_Time__c, oh.Friday_End_Time__c));
+            result.put('Saturday', FM_OpeningHours_Service.getOpenAndCloseHoursString(oh.Saturday_Start_Time__c, oh.Saturday_End_Time__c));
+            result.put('Sunday', FM_OpeningHours_Service.getOpenAndCloseHoursString(oh.Sunday_Start_Time__c, oh.Sunday_End_Time__c));
         }
 
         return result;
