@@ -4,6 +4,7 @@
         <members>EmailManager</members>
         <members>FM_OpeningHours_Service</members>
         <members>FM_OpeningHours_ServiceEndpoint</members>
+        <members>AdoptionTriggerHandler</members>
         <name>ApexClass</name>
     </types>
     <types>
