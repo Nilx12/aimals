@@ -5,6 +5,8 @@
         <members>FM_OpeningHours_Service</members>
         <members>FM_OpeningHours_ServiceEndpoint</members>
         <members>AdoptionTriggerHandler</members>
+        <members>NamedCredentialsCalloutTest</members>
+        <members>AnimalController</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -69,7 +71,16 @@
     <types>
         <members>accountMap</members>
         <members>opening_hours</members>
+        <members>animalFinder</members>
         <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Missing_Animals_Auth_Prov</members>
+        <name>AuthProvider</name>
+    </types>
+    <types>
+        <members>Missing_Animals_Cred</members>
+        <name>NamedCredential</name>
     </types>
     <version>54.0</version>
 </Package>
