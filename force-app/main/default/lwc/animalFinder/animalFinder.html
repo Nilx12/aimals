@@ -1,15 +1,57 @@
-<!--
- - Created by Kamil on 11.06.2022.
- -->
-
-<!-- Animal Finder -->
 <template>
-    <lightning-card title="Animals" icon-name="utility:animal_and_nature">
+    <lightning-card title="Ai:Mals" icon-name="utility:animal_and_nature">
         <div class="slds-card__body_inner">
             <!-- Start bear list -->
-            <template if:true={animals}>
+            <template if:true={animals.data}>
                 <lightning-layout multiple-rows="true" pull-to-boundary="small">
-                    <template for:each={animals} for:item="animal">
+                <lightning-input type="search"
+                                 id="breed"
+                                 onchange={handleSearchBreedChange}
+                                 variant="label-hidden"
+                                 class="slds-var-m-bottom_small"
+                                 label="Search"
+                                 placeholder="Breed"
+                                 value={searchBreed}>
+                </lightning-input>
+                <lightning-input type="search"
+                                 id="age"
+                                 onchange={handleSearchAgeChange}
+                                 variant="label-hidden"
+                                 class="slds-var-m-bottom_small"
+                                 label="Search"
+                                 placeholder="Age"
+                                 value={searchAge}>
+                </lightning-input>
+                    <lightning-combobox
+                            type="search"
+                            id="gender"
+                            name="gender"
+                            label="Gender"
+                            value={searchGender}
+                            placeholder="Select gender"
+                            variant="label-hidden"
+                            class="slds-var-m-bottom_small"
+                            options={genders}
+                            onchange={handleSearchGenderChange}>
+
+                    </lightning-combobox>
+                    <lightning-combobox
+                            type="search"
+                            id="accounts"
+                            name="account"
+                            label="Shelter"
+                            value={searchShelter}
+                            placeholder="Select shelter"
+                            variant="label-hidden"
+                            class="slds-var-m-bottom_small"
+                            options={shelters}
+                            onchange={handleSearchGenderChange}>
+
+                    </lightning-combobox>
+                </lightning-layout>
+
+                <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                    <template for:each={animals.data} for:item="animal">
                         <lightning-layout-item key={animal.Id} size="3" class="slds-var-p-around_x-small">
                             <!-- Start bear tile -->
                             <lightning-card title={animal.Name} class="bear-tile">
@@ -31,10 +73,16 @@
                         </lightning-layout-item>
                     </template>
                 </lightning-layout>
+                <!-- No bears found -->
+                <template if:false={hasResults}>
+                    <div class="slds-align_absolute-center slds-var-m-vertical_small">
+                        We did not find results...
+                    </div>
+                </template>
             </template>
             <!-- End bear list -->
             <!-- Data failed to load -->
-            <template if:true={error}>
+            <template if:true={animals.error}>
                 <div class="slds-text-color_error">
                     An error occurred while loading the animal list
                 </div>

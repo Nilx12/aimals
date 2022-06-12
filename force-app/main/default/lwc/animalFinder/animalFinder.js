@@ -3,40 +3,74 @@
  */
 
 import { LightningElement, api, wire, track } from 'lwc';
-import getAllAnimals from '@salesforce/apex/AnimalController.getAllAnimals';
+import searchAnimals from '@salesforce/apex/AnimalController.searchAnimals';
+import getAccounts from '@salesforce/apex/AnimalController.getAccounts';
+
 
 export default class AnimalFinder extends LightningElement {
-    //@track animalsList = [];
+    searchShelter = '';
+    searchBreed = '';
+    searchAge = null;
+    searchGender = '';
+
+
+    @wire(getAccounts) accounts;
+    accounts;
+
+    @wire(searchAnimals,{searchBreed: '$searchBreed',searchAge: '$searchAge',searchGender: '$searchGender'}) animals;
     animals;
-    errors;
+
+
+    handleSearchBreedChange(event) {
+            window.clearTimeout(this.delayTimeout);
+            const searchBreed = event.target.value;
+            this.delayTimeout = setTimeout(() => {
+            	this.searchBreed = searchBreed;
+            }, 300);
+        }
+    handleSearchAgeChange(event) {
+           window.clearTimeout(this.delayTimeout);
+           const searchAge = parseInt(event.target.value);
+           this.delayTimeout = setTimeout(() => {
+                this.searchAge = searchAge;
+                if(this.searchAge==NaN){
+                    this.searchAge=null;
+                }
+           }, 300);
+        }
+    handleSearchGenderChange(event) {
+          window.clearTimeout(this.delayTimeout);
+          const searchGender = event.detail.value;
+          this.delayTimeout = setTimeout(() => {
+                this.searchGender = searchGender;
+          }, 300);
+       }
 
 
 
-    connectedCallback() {
-    		this.loadAnimals();
+    get hasResults() {
+    		return (this.animals.data.length > 0);
     	}
-    	loadAnimals() {
-    		getAllAnimals()
-    			.then(result => {
-    				this.animals = result;
-    			})
-    			.catch(error => {
-    				this.error = error;
-    			});
-    	}
+    get genders() {
+            return [
+                { label: 'All', value: '%' },
+                { label: 'Male', value: 'Male' },
+                { label: 'Female', value: 'Female' },
+            ];
+        }
+    get shelters(){
+        console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        console.log(this.accounts);
+        console.log(this.accounts.data);
+        console.log(this.accounts.data[0].Id);
 
-   /* @wire(searchAnimals, {null})
-    wiredAnimals({ error, data }) {
-            if (data) {
-               for(let key in data) {
-                   if (data.hasOwnProperty(key)) {
-                        this.oHours.push({value:data[key], key:key});
-
-                   }
-               }
-            } else if (error) {
-                console.log(error)
-            }
-            //console.log(this.oHours[0]);
-        }*/
+        var dict = [];
+        for(var i=0;i<this.accounts.data.length;i++){
+            dict.push({
+                label:   this.accounts.data[i].Name,
+                value: this.accounts.data[i].Id
+            });
+        }
+        return dict;
+    }
 }
