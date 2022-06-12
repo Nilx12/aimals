@@ -8,7 +8,7 @@ import getAccounts from '@salesforce/apex/AnimalController.getAccounts';
 
 
 export default class AnimalFinder extends LightningElement {
-    searchShelter = '';
+    searchShelter = ' ';
     searchBreed = '';
     searchAge = null;
     searchGender = '';
@@ -17,7 +17,7 @@ export default class AnimalFinder extends LightningElement {
     @wire(getAccounts) accounts;
     accounts;
 
-    @wire(searchAnimals,{searchBreed: '$searchBreed',searchAge: '$searchAge',searchGender: '$searchGender'}) animals;
+    @wire(searchAnimals,{searchBreed: '$searchBreed',searchAge: '$searchAge',searchGender: '$searchGender',searchShelter:'$searchShelter'}) animals;
     animals;
 
 
@@ -45,7 +45,14 @@ export default class AnimalFinder extends LightningElement {
                 this.searchGender = searchGender;
           }, 300);
        }
-
+    handleSearchShelterChange(event) {
+        window.clearTimeout(this.delayTimeout);
+        console.log(event.detail.value);
+        const searchShelter = event.detail.value;
+        this.delayTimeout = setTimeout(() => {
+            this.searchShelter = searchShelter;
+        }, 300);
+    }
 
 
     get hasResults() {
@@ -59,12 +66,11 @@ export default class AnimalFinder extends LightningElement {
             ];
         }
     get shelters(){
-        console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-        console.log(this.accounts);
-        console.log(this.accounts.data);
-        console.log(this.accounts.data[0].Id);
-
         var dict = [];
+        dict.push({
+            label:   "All",
+            value: ""
+        });
         for(var i=0;i<this.accounts.data.length;i++){
             dict.push({
                 label:   this.accounts.data[i].Name,
