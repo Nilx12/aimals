@@ -12,6 +12,8 @@ export default class AnimalFinder extends LightningElement {
     searchBreed = '';
     searchAge = null;
     searchGender = '';
+    @api
+    myRecordId;
 
 
     @wire(getAccounts) accounts;
@@ -79,4 +81,14 @@ export default class AnimalFinder extends LightningElement {
         }
         return dict;
     }
+    get acceptedFormats() {
+            return ['.pdf', '.png'];
+        }
+
+        handleUploadFinished(event) {
+            // Get the list of uploaded files
+            const uploadedFiles = event.detail.files;
+            alert('No. of files uploaded : ' + uploadedFiles.length);
+        }
+
 }

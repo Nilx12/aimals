@@ -5,3 +5,11 @@
 		height: 100px;
 		width: 100px;
 }
+.removeLabel .slds-form-element__label {
+      display : none !important;
+      visibility : hidden !important;
+}
+.removeDropZone {
+      color: #ffffff;
+      --lwc-borderWidthThin: 0px;
+ }

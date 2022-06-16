@@ -3,12 +3,12 @@
         <div class="slds-card__body_inner">
             <!-- Start bear list -->
             <template if:true={animals.data}>
-                <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                <lightning-layout multiple-rows="true" pull-to-boundary="small" vertical-align="end">
                 <lightning-input type="search"
                                  id="breed"
                                  onchange={handleSearchBreedChange}
                                  variant="label-hidden"
-                                 class="slds-var-m-bottom_small"
+                                 class="slds-var-m-bottom_small slds-m-top_x-small"
                                  label="Search"
                                  placeholder="Breed"
                                  value={searchBreed}>
@@ -17,7 +17,7 @@
                                  id="age"
                                  onchange={handleSearchAgeChange}
                                  variant="label-hidden"
-                                 class="slds-var-m-bottom_small"
+                                 class="slds-var-m-bottom_small slds-m-top_x-small"
                                  label="Search"
                                  placeholder="Age"
                                  value={searchAge}>
@@ -30,7 +30,7 @@
                             value={searchGender}
                             placeholder="Select gender"
                             variant="label-hidden"
-                            class="slds-var-m-bottom_small"
+                            class="slds-var-m-bottom_small slds-m-top_x-small"
                             options={genders}
                             onchange={handleSearchGenderChange}>
 
@@ -43,11 +43,21 @@
                             value={searchShelter}
                             placeholder="Select shelter"
                             variant="label-hidden"
-                            class="slds-var-m-bottom_small"
+                            class="slds-var-m-bottom_small slds-m-top_large"
                             options={shelters}
                             onchange={handleSearchShelterChange}>
 
                     </lightning-combobox>
+                    <lightning-file-upload
+                            label=""
+                            variant="label-hidden"
+                            name="fileUploader"
+                            accept={acceptedFormats}
+                            record-id={myRecordId}
+                            onuploadfinished={handleUploadFinished}
+                            class="removeLabel removeDropZone slds-m-bottom_small"
+                    >
+                    </lightning-file-upload>
                 </lightning-layout>
 
                 <lightning-layout multiple-rows="true" pull-to-boundary="small">
