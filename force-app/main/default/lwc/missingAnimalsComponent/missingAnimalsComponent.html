@@ -1,0 +1,53 @@
+<template>
+    <lightning-card title="Missing Animals Search">
+        <div class="slds-card__body slds-card__body_inner">
+
+            <lightning-layout vertical-align="end" horizontal-align="center">
+                <lightning-layout-item padding="around-small" size="5" flexibility="auto">
+                    <lightning-input
+                            type="number"
+                            name="InputDayDelta"
+                            required="true"
+                            placeholder="Enter number of days you want to look behind at"
+                            onchange={handleDayDeltaChange}
+                            label="">
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="1" flexibility="auto">
+                    <lightning-button
+                            name="SearchMissingAnimals"
+                            label="Search"
+                            title="Non-primary action"
+                            onclick={handleSearchClick}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <template if:true={spinner}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+
+            <template if:false={error}>
+                <lightning-layout horizontal-align="center" multiple-rows="true" pull-to-boundary="small">
+                    <template for:each={missingAnimalsImages} for:item="image">
+                        <lightning-layout-item
+                                class="slds-var-p-around_x-small"
+                                key={image.key}
+                                padding="around-small"
+                                size="2"
+                                flexibility="auto">
+                            <img src={image.value} alt="Animal profile" class="image"/>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-text-align_center">
+                    {errorMessage}
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
