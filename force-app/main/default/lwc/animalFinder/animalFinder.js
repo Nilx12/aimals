@@ -1,25 +1,25 @@
 /**
  * Created by Kamil on 11.06.2022.
  */
-
 import { LightningElement, api, wire, track } from 'lwc';
 import searchAnimals from '@salesforce/apex/AnimalController.searchAnimals';
 import getAccounts from '@salesforce/apex/AnimalController.getAccounts';
-
+import getByImage from '@salesforce/apex/AnimalController.getByImage';
+import setContent from '@salesforce/apex/AnimalController.setContent';
 
 export default class AnimalFinder extends LightningElement {
+    @api myRecordId;
+    documentId = '';
     searchShelter = ' ';
     searchBreed = '';
     searchAge = null;
     searchGender = '';
-    @api
-    myRecordId;
-
+    imagesearch = '';
 
     @wire(getAccounts) accounts;
     accounts;
 
-    @wire(searchAnimals,{searchBreed: '$searchBreed',searchAge: '$searchAge',searchGender: '$searchGender',searchShelter:'$searchShelter'}) animals;
+    @wire(searchAnimals,{searchBreed: '$searchBreed',searchAge: '$searchAge',searchGender: '$searchGender',searchShelter:'$searchShelter',imageSearch:'$imagesearch'}) animals;
     animals;
 
 
@@ -82,13 +82,26 @@ export default class AnimalFinder extends LightningElement {
         return dict;
     }
     get acceptedFormats() {
-            return ['.pdf', '.png'];
+            return ['.jpeg','.jpg', '.png'];
         }
 
-        handleUploadFinished(event) {
+    handleUploadFinished(event) {
             // Get the list of uploaded files
             const uploadedFiles = event.detail.files;
-            alert('No. of files uploaded : ' + uploadedFiles.length);
+
+            console.log(uploadedFiles[0].documentId);
+
+            const searchImage = uploadedFiles[0].documentId;
+
+
+            setContent({documentId:searchImage}).then(()=>{
+                this.imagesearch = searchImage;
+        }).catch(error=>{
+            console.log(error);
+        })
+
+
+
         }
 
 }
