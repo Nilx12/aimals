@@ -4,6 +4,12 @@
         <members>AnimalController</members>
         <members>AnimalSearch</members>
         <members>MissingAnimalsFlow</members>
+        <members>EmailManager</members>
+        <members>FM_OpeningHours_Service</members>
+        <members>FM_OpeningHours_ServiceEndpoint</members>
+        <members>AdoptionTriggerHandler</members>
+        <members>NamedCredentialsCalloutTest</members>
+        <members>MissingAnimalsRestCallout</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -39,8 +45,20 @@
     <types>
         <members>accountMap</members>
         <members>opening_hours</members>
+    <types>
         <members>animalFinder</members>
         <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>missingAnimalsComponent</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Missing_Animals_Auth_Prov</members>
+        <name>AuthProvider</name>
+    </types>
+    <types>
+        <name>CustomField</name>
     </types>
     <types>
         <members>Missing_Animals_Cred</members>
