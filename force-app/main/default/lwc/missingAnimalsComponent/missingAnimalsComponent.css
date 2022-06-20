@@ -1,0 +1,11 @@
+.image {
+    width: 200px;
+    height: 200px;
+}
+
+.slds-text-align_center {
+    alignment: center;
+    text-align: center;
+    font-size: 12px;
+    color: #FF0000;
+}
