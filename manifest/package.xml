@@ -2,6 +2,8 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>AnimalController</members>
+        <members>AnimalSearch</members>
+        <members>MissingAnimalsFlow</members>
         <members>EmailManager</members>
         <members>FM_OpeningHours_Service</members>
         <members>FM_OpeningHours_ServiceEndpoint</members>
@@ -61,6 +63,14 @@
     <types>
         <members>Missing_Animals_Cred</members>
         <name>NamedCredential</name>
+    </types>
+    <types>
+        <members>Create_Cae</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Case.Type</members>
+        <name>CustomField</name>
     </types>
     <version>54.0</version>
 </Package>
