@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>AnimalController</members>
         <members>EmailManager</members>
         <members>FM_OpeningHours_Service</members>
         <members>FM_OpeningHours_ServiceEndpoint</members>
@@ -8,27 +9,6 @@
         <members>NamedCredentialsCalloutTest</members>
         <members>MissingAnimalsRestCallout</members>
         <name>ApexClass</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>Account</members>
-        <members>Adoption__c</members>
-        <members>Animal__c</members>
-        <members>MissingAnimal__c</members>
-        <members>Case</members>
-        <members>Contact</members>
-        <members>Opening_Hours__c</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>Adoption__c</members>
-        <members>Animal__c</members>
-        <members>MissingAnimal__c</members>
-        <members>Opening_Hours__c</members>
-        <name>CustomTab</name>
     </types>
     <types>
         <members>Adoption__c-Adoption Layout</members>
@@ -57,20 +37,17 @@
         <name>ValidationRule</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ContentAsset</name>
-    </types>
-    <types>
-        <members>AImals</members>
-        <name>CustomApplication</name>
-    </types>
-    <types>
         <members>Aimals_Account_Page</members>
         <name>FlexiPage</name>
     </types>
     <types>
         <members>accountMap</members>
         <members>opening_hours</members>
+    <types>
+        <members>animalFinder</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
         <members>missingAnimalsComponent</members>
         <name>LightningComponentBundle</name>
     </types>

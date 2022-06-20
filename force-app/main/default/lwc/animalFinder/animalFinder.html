@@ -1,0 +1,102 @@
+<template>
+    <lightning-card title="Ai:Mals" icon-name="utility:animal_and_nature">
+        <div class="slds-card__body_inner">
+            <!-- Start bear list -->
+            <template if:true={animals.data}>
+                <lightning-layout multiple-rows="true" pull-to-boundary="small" vertical-align="end">
+                <lightning-input type="search"
+                                 id="breed"
+                                 onchange={handleSearchBreedChange}
+                                 variant="label-hidden"
+                                 class="slds-var-m-bottom_small slds-m-top_x-small"
+                                 label="Search"
+                                 placeholder="Breed"
+                                 value={searchBreed}>
+                </lightning-input>
+                <lightning-input type="search"
+                                 id="age"
+                                 onchange={handleSearchAgeChange}
+                                 variant="label-hidden"
+                                 class="slds-var-m-bottom_small slds-m-top_x-small"
+                                 label="Search"
+                                 placeholder="Age"
+                                 value={searchAge}>
+                </lightning-input>
+                    <lightning-combobox
+                            type="search"
+                            id="gender"
+                            name="gender"
+                            label="Gender"
+                            value={searchGender}
+                            placeholder="Select gender"
+                            variant="label-hidden"
+                            class="slds-var-m-bottom_small slds-m-top_x-small"
+                            options={genders}
+                            onchange={handleSearchGenderChange}>
+
+                    </lightning-combobox>
+                    <lightning-combobox
+                            type="search"
+                            id="accounts"
+                            name="account"
+                            label="Shelter"
+                            value={searchShelter}
+                            placeholder="Select shelter"
+                            variant="label-hidden"
+                            class="slds-var-m-bottom_small slds-m-top_large"
+                            options={shelters}
+                            onchange={handleSearchShelterChange}>
+
+                    </lightning-combobox>
+                    <lightning-file-upload
+                            label=""
+                            variant="label-hidden"
+                            name="fileUploader"
+                            accept={acceptedFormats}
+                            record-id={myRecordId}
+                            onuploadfinished={handleUploadFinished}
+                            class="removeLabel removeDropZone slds-m-bottom_small"
+                    >
+                    </lightning-file-upload>
+                </lightning-layout>
+
+                <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                    <template for:each={animals.data} for:item="animal">
+                        <lightning-layout-item key={animal.Id} size="3" class="slds-var-p-around_x-small">
+                            <!-- Start bear tile -->
+                            <lightning-card title={animal.Name} class="bear-tile">
+                                <div class="slds-var-p-horizontal_small bear-tile-body">
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <img src={animal.Photo__c} alt="Animal profile" class="animal-photo"/>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <p class="slds-var-m-bottom_xx-small">{animal.Breed__c}</p>
+                                            <p class="slds-var-m-bottom_xx-small">{animal.Age__c} years old</p>
+                                            <p class="slds-var-m-bottom_xx-small">{animal.Sex__c}</p>
+                                            <p class="slds-var-m-bottom_xx-small">{animal.Weight__c} Kg</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                            <!-- End bear tile -->
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+                <!-- No bears found -->
+                <template if:false={hasResults}>
+                    <div class="slds-align_absolute-center slds-var-m-vertical_small">
+                        We did not find results...
+                    </div>
+                </template>
+            </template>
+            <!-- End bear list -->
+            <!-- Data failed to load -->
+            <template if:true={animals.error}>
+                <div class="slds-text-color_error">
+                    An error occurred while loading the animal list
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
